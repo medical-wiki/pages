@@ -1,6 +1,6 @@
 {
   "homepage": "https://medical-wiki.github.io/pages",
-  "name": "nedo",
+  "name": "medical-wiki",
   "version": "0.1.0",
   "private": true,
   "scripts": {
