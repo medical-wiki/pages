@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import getUrlParams from "./getUrlParams";
+import GetUrlParams from "./getUrlParams";
 
 const InputForm = ({ SubmitButton }) => {
 
-  const [formData, setFormData] = useState(getUrlParams());
+  const [formData, setFormData] = useState(GetUrlParams());
 
 
   const handleInput = (e) => {

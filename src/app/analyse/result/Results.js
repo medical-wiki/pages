@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import irLogic1 from "../irLogic1";
-import getUrlParams from "../getUrlParams";
+import GetUrlParams from "../GetUrlParams";
 
 const Results = () => {
 
-  const formData = getUrlParams();
+  const formData = GetUrlParams();
   const router = useRouter();
   const result = irLogic1(formData);
 
