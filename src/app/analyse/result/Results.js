@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import irLogic1 from "../irLogic1";
-import GetUrlParams from "../GetUrlParams";
+import GetUrlParams from "../getUrlParams";
 
 const Results = () => {
 
