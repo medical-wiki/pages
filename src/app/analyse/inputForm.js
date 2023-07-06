@@ -1,29 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { useSearchParams } from 'next/navigation';
+import getUrlParams from "./getUrlParams";
 
-const IR = ({ handleSubmitFunc }) => {
-  const searchParams = useSearchParams();
- 
-  const ins0 = searchParams.get('ins0') || 0;
-  const ins60 = searchParams.get('ins60') || 0;
-  const ins120 = searchParams.get('ins120') || 0;
-  const g0 = searchParams.get('g0') || 0;
-  const g60 = searchParams.get('g60') || 0;
-  const g120 = searchParams.get('g120') || 0;
+const InputForm = ({ SubmitButton }) => {
 
-  const [formData, setFormData] = useState({
-    insuline0: ins0,
-    insuline60: ins60,
-    insuline120: ins120,
-    glucose0: g0,
-    glucose60: g60,
-    glucose120: g120
-  });
+  const [formData, setFormData] = useState(getUrlParams());
 
-  console.log("sssssssssssssssss222 ")
-
-  handleSubmitFunc(formData, false);
 
   const handleInput = (e) => {
     const fieldName = e.target.id;
@@ -35,16 +17,12 @@ const IR = ({ handleSubmitFunc }) => {
     }));
   }
 
-  const submitForm = (e) => {
-    handleSubmitFunc(formData, true);
-  }
-
   return (
     <>
       <div className="flex flex-col items-center">
         <div className="justify-between p-8 max-w-5xl justify-center">
           <label >Анализ на резултати от изследвания за кръвна захар (глюкоза) и серумен инсулин по метода ОГТТ: Орален глюкозо-толерантен тест.
-            Този тест е направен от изкуствен итнелект и не може да се гарантира неговата безгрешност. Винаги човешката преценка е с прецедент.
+            Този тест е направен от изкуствен итнелект и не може да се гарантира неговата безгрешност.
           </label>
         </div>
       </div>
@@ -119,12 +97,11 @@ const IR = ({ handleSubmitFunc }) => {
             <input disabled type="number" id="glucose180" value={0} placeholder="4.97 mmol/L" step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </div>
           <br></br>
-          <br></br>
-          <button onClick={submitForm} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Анализ</button>
         </div>
+         {<SubmitButton data={formData}/>}
       </div>
     </>
   )
 }
 
-export default IR;
+export default InputForm;
