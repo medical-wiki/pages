@@ -1,7 +1,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
 
-const getUrlParams = () => {
+const GetUrlParams = () => {
   const searchParams = useSearchParams();
 
   const [formData] = useState({
@@ -15,4 +15,4 @@ const getUrlParams = () => {
    return formData;
 }
 
-export default getUrlParams;
+export default GetUrlParams;
