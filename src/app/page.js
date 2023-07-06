@@ -26,21 +26,19 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center p-8 ">
         <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-1 lg:text-center gap-6 max-w-5xl">
           <br></br>
-          <span> koooe Този сайт има за цел да подпомогне лечението на пациенти с инсулинова резистентност и други подобни метаболитни нарушения.
-            Сайтът е авторски koooe Този сайт има за цел да подпомогне лечението на пациенти с инсулинова резистентност и други подобни метаболитни нарушения.
-            Сайтът е авторски koooe
+          <span> Този страница има за цел да подпомогне диагнозата и лечението на инсулинова резистентност и други подобни метаболитни нарушения.
           </span>
         </div>
         <br></br>
         <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-center">
-          <Item href="/theory" title="Теория" info="информация, статии, материали" />
-          <Item href="/" disabled title="Симптоми" info="въпроси и отговори" />
+          <Item href="/theory" title="Теория" info="информация" />
+          {/* <Item href="/" disabled title="Симптоми" info="въпроси и отговори" /> */}
           <Item href="/faq" title="Питанки" info="въпроси и отговори" />
-          <Item href="/diary" title="Дневник" info="хранителен дневник" />
+          {/* <Item href="/diary" title="Дневник" info="хранителен дневник" /> */}
           <Item href="/analyse" title="Анализ" info="анализ на изследвания с изкуствен интелект" />
           <Item href="/drugs" title="Лекарства" info="мнения и препоръки" />
-          <Item href="/doctors" title="Лекари" info="мнения и препоръки" />
-          <Item href="/about" title="Контакти" info="свържете се с нас" />
+          {/* <Item href="/doctors" title="Лекари" info="мнения и препоръки" /> */}
+          {/* <Item href="/about" title="Контакти" info="свържете се с нас" /> */}
         </div>
       </main>
     </div>
