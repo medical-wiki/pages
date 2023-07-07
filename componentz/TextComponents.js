@@ -10,7 +10,7 @@ export const Heading1 = ({ children, id }) => {
   );
 }
 
-export const Link1 = ({ href, text }) => {
+export const Link1 = ({ href, text, id }) => {
   return (
     <>
       <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={href}> {text} </Link>
