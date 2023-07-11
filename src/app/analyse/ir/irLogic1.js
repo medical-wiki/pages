@@ -96,10 +96,11 @@ const getHoma1BIndex = (input) => {
 }
 
 const checkInsulineResistance = (input) => {
+
   checkInsulineResistance0min(input);
   checkInsulineResistance60min(input);
   checkInsulineResistance120min(input);
-  if (!irResult0 && !irResult60 && !irResult120) {
+  if (irResult0 < 0 && irResult60 < 0 && irResult120 < 0) {
     analysedResults.push("Не може да се направи качествен анализ на ИР по дадените измервания;");
   } else {
     analysedResults.push(getSentence(irResult0, 0));
