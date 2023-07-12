@@ -25,7 +25,7 @@ const InputForm = ({ SubmitButton }) => {
       <div className="flex flex-col items-center">
         <div className="justify-between p-8 max-w-5xl justify-center">
           <label >Анализ на резултати от изследвания за кръвна захар (глюкоза) и серумен инсулин по метода ОГТТ: Орален глюкозо-толерансен тест.
-            Този анализ е направен от изкуствен итнелект, следователно не може да се гарантира неговата безгрешност.
+            Този анализ се извършва от изкуствен итнелект, следователно не може да се гарантира неговата безгрешност.
           </label>
         </div>
       </div>
@@ -52,19 +52,19 @@ const InputForm = ({ SubmitButton }) => {
         <div className="grid gap-2 mb-2 md:grid-cols-2">
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">0 min</label>
-            <input type="number" id="insuline0" onChange={handleInput} onFocus={handleFocus} value={formData.insuline0} step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <input type="number" id="insulin0" onChange={handleInput} onFocus={handleFocus} value={formData.insulin0} step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">60 min</label>
-            <input type="number" id="insuline60" onChange={handleInput} onFocus={handleFocus} value={formData.insuline60} placeholder="5.21 mU/L" step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <input type="number" id="insulin60" onChange={handleInput} onFocus={handleFocus} value={formData.insulin60} placeholder="5.21 mU/L" step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">120 min</label>
-            <input type="number" id="insuline120" onChange={handleInput} onFocus={handleFocus} value={formData.insuline120} placeholder="5.21 mU/L" step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <input type="number" id="insulin120" onChange={handleInput} onFocus={handleFocus} value={formData.insulin120} placeholder="5.21 mU/L" step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">180 min</label>
-            <input disabled type="number" id="insuline180"  value={0} step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <input disabled type="number" id="insulin180"  value={0} step="0.01" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           </div>
         </div>
         <br></br>

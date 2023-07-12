@@ -43,7 +43,7 @@ function InsulinChart({ values }) {
         label: "инсулин",
         borderColor: "rgba(220,38,38)",
         lineTension: 0.4,
-        data: [values.insuline0, null, values.insuline60, null, values.insuline120]
+        data: [values.insulin0, null, values.insulin60, null, values.insulin120]
       },
       {
         label: "реф. инсулин",
