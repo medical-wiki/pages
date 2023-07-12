@@ -26,7 +26,7 @@ const irLogic1 = (input) => {
 }
 
 const getInputSummary = (input) => {
-  analysedResults.push("===== ВХОДНИ ДАННИ ===== ");
+  analysedResults.push(<span className="text-lg ">======= ВХОДНИ ДАННИ =======</span>);
   addInputSummaryIfNotZero("инсулин 0 min  : ", input.insuline0);
   addInputSummaryIfNotZero("инсулин 60 min : ", input.insuline60);
   addInputSummaryIfNotZero("инсулин 120 min: ", input.insuline120);
@@ -35,7 +35,7 @@ const getInputSummary = (input) => {
   addInputSummaryIfNotZero("глюкоза 120 min: ", input.glucose120);
   analysedResults.push(" ");
   analysedResults.push(" ");
-  analysedResults.push("===== АНАЛИЗ ===== ");
+  analysedResults.push(<span className="text-lg">======== АНАЛИЗ ========</span>);
 }
 
 const addInputSummaryIfNotZero = (text, bloodValue) => {
@@ -47,7 +47,7 @@ const addInputSummaryIfNotZero = (text, bloodValue) => {
 }
 
 const getHomaIrIndex = (input) => {
-  if (!input.insuline0 || !input.glucose0) {
+  if (input.insuline0 <= 0.5 || input.glucose0 <= 0.5) {
     return;
   }
   let result = "";
@@ -70,7 +70,7 @@ const getHoma2BIndex = (input) => {
 }
 
 const getHoma1BIndex = (input) => {
-  if (!input.insuline0 || !input.glucose0) {
+  if (input.insuline0 <= 0.5 || input.glucose0 <= 0.5) {
     return;
   }
   let result = "HOMA1-%β индексът е: ";
@@ -115,14 +115,14 @@ const checkInsulinPeak = (input) => {
   let result = 0;
   if (input.insuline60 !== 0 && input.insuline60 <= input.insuline120 - 1) {
     result = 1;
-    analysedResults.push("Инсулиновият пик е забавен, случва се след 60 минута от теста; Това се счита за по-голяма склонност за развитие на диабет;");
+    analysedResults.push("Инсулиновият пик е забавен след 60 минута от теста; Това e по-голяма склонност за развитие на диабет;");
   }
   insulinPeak = result;
 }
 
 const checkInsulineResistance0min = (input) => {
   let result;
-  if (input.insuline0 <= 0) {
+  if (input.insuline0 <= 0.5) {
     result = -1;
   } else if (input.insuline0 < 7) {
     result = 0;
@@ -138,7 +138,7 @@ const checkInsulineResistance0min = (input) => {
 
 const checkInsulineResistance60min = (input) => {
   let result;
-  if (input.insuline60 <= 0) {
+  if (input.insuline60 <= 0.5) {
     result = -1;
   } else if (input.insuline60 < 40) {
     result = 0;
@@ -154,7 +154,7 @@ const checkInsulineResistance60min = (input) => {
 
 const checkInsulineResistance120min = (input) => {
   let result;
-  if (input.insuline120 <= 0) {
+  if (input.insuline120 <= 0.5) {
     result = -1;
   } else if (input.insuline120 < 9) {
     result = 0;
@@ -175,7 +175,7 @@ const getSentence = (momentaryIrStrength, minute) => {
   if (momentaryIrStrength === 1) modifier = "СЛАБА";
   if (momentaryIrStrength === 2) modifier = "УМЕРЕНА";
   if (momentaryIrStrength === 3) modifier = "СИЛНА";
-  return "Открива се " + modifier + " инсулинова резистентност на " + minute + " минута от теста;";
+  return "Има " + modifier + " инсулинова резистентност на " + minute + " минута от теста;";
 }
 
 export default irLogic1;
