@@ -7,7 +7,7 @@ const irLogic1 = (input) => {
   analysedResults = [];
 
   getInputSummary(input);
-  checkInsulineResistance(input);
+  checkInsulinResistance(input);
   getHomaIrIndex(input);
   // getHoma2BIndex(input);
   getHoma1BIndex(input);
@@ -26,16 +26,16 @@ const irLogic1 = (input) => {
 }
 
 const getInputSummary = (input) => {
-  analysedResults.push("===== ВХОДНИ ДАННИ ===== ");
-  addInputSummaryIfNotZero("инсулин 0 min  : ", input.insuline0);
-  addInputSummaryIfNotZero("инсулин 60 min : ", input.insuline60);
-  addInputSummaryIfNotZero("инсулин 120 min: ", input.insuline120);
+  analysedResults.push(<span className="text-lg ">======= ВХОДНИ ДАННИ =======</span>);
+  addInputSummaryIfNotZero("инсулин 0 min  : ", input.insulin0);
+  addInputSummaryIfNotZero("инсулин 60 min : ", input.insulin60);
+  addInputSummaryIfNotZero("инсулин 120 min: ", input.insulin120);
   addInputSummaryIfNotZero("глюкоза 0 min  : ", input.glucose0);
   addInputSummaryIfNotZero("глюкоза 60 min : ", input.glucose60);
   addInputSummaryIfNotZero("глюкоза 120 min: ", input.glucose120);
   analysedResults.push(" ");
   analysedResults.push(" ");
-  analysedResults.push("===== АНАЛИЗ ===== ");
+  analysedResults.push(<span className="text-lg">======== АНАЛИЗ ========</span>);
 }
 
 const addInputSummaryIfNotZero = (text, bloodValue) => {
@@ -47,12 +47,12 @@ const addInputSummaryIfNotZero = (text, bloodValue) => {
 }
 
 const getHomaIrIndex = (input) => {
-  if (!input.insuline0 || !input.glucose0) {
+  if (input.insulin0 <= 0.5 || input.glucose0 <= 0.5) {
     return;
   }
   let result = "";
   try {
-    homaIrIndex = Math.round((input.insuline0 * input.glucose0 / 22.5) * 100) / 100;
+    homaIrIndex = Math.round((input.insulin0 * input.glucose0 / 22.5) * 100) / 100;
   } catch (error) {
     result = "HOMA1-IR индексът не може да бъде изчислен на база на дадените стойности;";
   }
@@ -70,12 +70,12 @@ const getHoma2BIndex = (input) => {
 }
 
 const getHoma1BIndex = (input) => {
-  if (!input.insuline0 || !input.glucose0) {
+  if (input.insulin0 <= 0.5 || input.glucose0 <= 0.5) {
     return;
   }
   let result = "HOMA1-%β индексът е: ";
   try {
-    homa1BIndex = Math.round(100 * (20 * input.insuline0) / (input.glucose0 - 3.5)) / 100;
+    homa1BIndex = Math.round(100 * (20 * input.insulin0) / (input.glucose0 - 3.5)) / 100;
   } catch (e) {
     analysedResults.push("HOMA1-%β индексът не може да бъде изчислен на база на дадените стойности;");
     return;
@@ -95,11 +95,11 @@ const getHoma1BIndex = (input) => {
   analysedResults.push(" ");
 }
 
-const checkInsulineResistance = (input) => {
+const checkInsulinResistance = (input) => {
 
-  checkInsulineResistance0min(input);
-  checkInsulineResistance60min(input);
-  checkInsulineResistance120min(input);
+  checkInsulinResistance0min(input);
+  checkInsulinResistance60min(input);
+  checkInsulinResistance120min(input);
   if (irResult0 < 0 && irResult60 < 0 && irResult120 < 0) {
     analysedResults.push("Не може да се направи качествен анализ на ИР по дадените измервания;");
   } else {
@@ -113,56 +113,56 @@ const checkInsulineResistance = (input) => {
 
 const checkInsulinPeak = (input) => {
   let result = 0;
-  if (input.insuline60 !== 0 && input.insuline60 <= input.insuline120 - 1) {
+  if (input.insulin60 !== 0 && input.insulin60 <= input.insulin120 - 1) {
     result = 1;
-    analysedResults.push("Инсулиновият пик е забавен, случва се след 60 минута от теста; Това се счита за по-голяма склонност за развитие на диабет;");
+    analysedResults.push("Инсулиновият пик е забавен след 60 минута от теста; Това e по-голяма склонност за развитие на диабет;");
   }
   insulinPeak = result;
 }
 
-const checkInsulineResistance0min = (input) => {
+const checkInsulinResistance0min = (input) => {
   let result;
-  if (input.insuline0 <= 0) {
+  if (input.insulin0 <= 0.5) {
     result = -1;
-  } else if (input.insuline0 < 7) {
+  } else if (input.insulin0 < 7) {
     result = 0;
-  } else if (input.insuline0 < 11) {
+  } else if (input.insulin0 < 11) {
     result = 1;
-  } else if (input.insuline0 < 15) {
+  } else if (input.insulin0 < 15) {
     result = 2;
-  } else if (input.insuline0 >= 15) {
+  } else if (input.insulin0 >= 15) {
     result = 3;
   }
   irResult0 = result;
 }
 
-const checkInsulineResistance60min = (input) => {
+const checkInsulinResistance60min = (input) => {
   let result;
-  if (input.insuline60 <= 0) {
+  if (input.insulin60 <= 0.5) {
     result = -1;
-  } else if (input.insuline60 < 40) {
+  } else if (input.insulin60 < 40) {
     result = 0;
-  } else if (input.insuline60 < 50) {
+  } else if (input.insulin60 < 50) {
     result = 1;
-  } else if (input.insuline60 < 60) {
+  } else if (input.insulin60 < 60) {
     result = 2;
-  } else if (input.insuline60 >= 70) {
+  } else if (input.insulin60 >= 70) {
     result = 3;
   }
   irResult60 = result;
 }
 
-const checkInsulineResistance120min = (input) => {
+const checkInsulinResistance120min = (input) => {
   let result;
-  if (input.insuline120 <= 0) {
+  if (input.insulin120 <= 0.5) {
     result = -1;
-  } else if (input.insuline120 < 9) {
+  } else if (input.insulin120 < 9) {
     result = 0;
-  } else if (input.insuline120 < 15) {
+  } else if (input.insulin120 < 15) {
     result = 1;
-  } else if (input.insuline120 < 30) {
+  } else if (input.insulin120 < 30) {
     result = 2;
-  } else if (input.insuline120 >= 30) {
+  } else if (input.insulin120 >= 30) {
     result = 3;
   }
   irResult120 = result;
@@ -175,7 +175,7 @@ const getSentence = (momentaryIrStrength, minute) => {
   if (momentaryIrStrength === 1) modifier = "СЛАБА";
   if (momentaryIrStrength === 2) modifier = "УМЕРЕНА";
   if (momentaryIrStrength === 3) modifier = "СИЛНА";
-  return "Открива се " + modifier + " инсулинова резистентност на " + minute + " минута от теста;";
+  return "Има " + modifier + " инсулинова резистентност на " + minute + " минута от теста;";
 }
 
 export default irLogic1;
